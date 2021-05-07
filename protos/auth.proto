@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package protobuf.identity;
+
+option php_metadata_namespace = "Protobuf\\Identity\\Metadata";
+
+service AuthService {
+    rpc SignIn (SignInRequest) returns (Response) {}
+    rpc SignUp (SignUpRequest) returns (Response) {}
+}
+
+message SignInRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message SignUpRequest {
+    string name = 1;
+    string email = 2;
+    string password = 3;
+    string password_confirmation = 4;
+}
+
+message Response {
+    int64 id = 1;
+    string token = 2;
+}
